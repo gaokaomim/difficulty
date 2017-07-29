@@ -29,8 +29,8 @@
 并不是这样:我们每次调用result的时候,发现变量N一直在内存中,并且再累加，这就是闭包的神奇用处。
  ### 3.使用闭包定义私有变量
      通常，javascript开发者使用下划线作为私用变量的前缀，但是实际上这些变量依然可以被访问和修改，并非真正的私有变量。这时，使用闭包可以定义真正的私有变量
-   ```javascript
-    function Product(){
+ ```javascript
+     function Product(){
       var name;
       this.setName=function(value){
           name = value;
@@ -43,6 +43,6 @@
       console.log(p.name); // 输出undefined
       console.log(p.getName()); // 输出Fundebug
     }
-   ```
+   ```
    代码中，对象p的name属性为私有变量，使用p.name不能直接访问。
 
