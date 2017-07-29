@@ -119,5 +119,10 @@
    ```
    代码中，我们可以一次性传入2个1作为参数add(1)(1),也可以传入以一个参数之后获取add1与add10函数，这样使用起来非常灵活。
  ### 8.apply,call与bind方法
-   JavaScript开发者有必要理解apply,call与bind方法的不同点,他们共同点
-   
+   JavaScript开发者有必要理解apply,call与bind方法的不同点,他们共同点是第一个参数都是this,即函数运行时依赖的上下文。
+   三者之中，call方法最简单的，它等价于指定this值调用函数:
+    ```javascript
+    var user={
+      name:"Rahul Mhatre",
+    }
+   ```
