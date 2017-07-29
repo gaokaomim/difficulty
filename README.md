@@ -47,43 +47,43 @@
    代码中，对象p的name属性为私有变量，使用p.name不能直接访问。
  ### 4.prototype
     每个JavaScript构造函数都有一个prototype属性，用于设置所有实例对象需要共享的属性和方法。prototype属性不能列举。JavaScript仅支持通过prototype属性进行继承属性和方法。
-     ```javascript
-      function Retangle(x,y){
-        this._length=x;
-        this._breadth=y; 
-      }
-      Rectangle.prototype.getDimesions=function()
-      {
-        return{
-           length:this._length,
-           breadth:this._breadth
-        };
+   ```javascript
+    function Retangle(x,y){
+      this._length=x;
+      this._breadth=y; 
+    }
+    Rectangle.prototype.getDimesions=function()
+    {
+      return{
+         length:this._length,
+         breadth:this._breadth
       };
-      var c = new Rectangle(3,4);
-      var y = new Rectangle(4,3);
-      console.log(x.getDimensions()); // {length :3,breadth:4}
-      console.log(y.getDimensions()); // {length:4,breadth:3}
-   ```
+    };
+    var c = new Rectangle(3,4);
+    var y = new Rectangle(4,3);
+    console.log(x.getDimensions()); // {length :3,breadth:4}
+    console.log(y.getDimensions()); // {length:4,breadth:3}
+ ```
   代码中，x和y都是构造函数Rectangle创建的对象实例，它们通过prototype继承了getDimensions方法 。
    ### 5.模块化
      JavaScript并非模块化编程语言，至少ES6落地之前都不是。然而对于一个复杂的web应用，模块化编程时一个最基本的要求。这时，可以使用立即执行函数来实现模块化，正如很多JS库比如jQuery以及我们Fundebug都是这样实现的。
-     ```javascript
-    var module=(function(){
-        var N=5;
-        function print(x){
-          console.log("The result is:"+x)
-        }
-        function add(a){
-          var x = a + N;
-          print(x);
-        }
-        return {
-           description:"This is description",
-           add:add
-        };
-    })();
-    console.log(module.description);//输出"this is description"
-    module.add(5); // 输出 "The result is:10"
+   ```javascript
+  var module=(function(){
+      var N=5;
+      function print(x){
+        console.log("The result is:"+x)
+      }
+      function add(a){
+        var x = a + N;
+        print(x);
+      }
+      return {
+         description:"This is description",
+         add:add
+      };
+  })();
+  console.log(module.description);//输出"this is description"
+  module.add(5); // 输出 "The result is:10"
    ```
    所谓模块化,就是根据需要控制模块内属性与方法的可访问性,即私有或者公开.在代码中,module为一个独立的模块，N为其私有属性，print为其私用方法，description为其公有属性,add为其共有方法。
    ### 6.变量提升
