@@ -45,4 +45,76 @@
     }
    ```
    代码中，对象p的name属性为私有变量，使用p.name不能直接访问。
-
+ ### 4.prototype
+    每个JavaScript构造函数都有一个prototype属性，用于设置所有实例对象需要共享的属性和方法。prototype属性不能列举。JavaScript仅支持通过prototype属性进行继承属性和方法。
+     ```javascript
+      function Retangle(x,y){
+        this._length=x;
+        this._breadth=y; 
+      }
+      Rectangle.prototype.getDimesions=function()
+      {
+        return{
+           length:this._length,
+           breadth:this._breadth
+        };
+      };
+      var c = new Rectangle(3,4);
+      var y = new Rectangle(4,3);
+      console.log(x.getDimensions()); // {length :3,breadth:4}
+      console.log(y.getDimensions()); // {length:4,breadth:3}
+   ```
+  代码中，x和y都是构造函数Rectangle创建的对象实例，它们通过prototype继承了getDimensions方法 。
+   ### 5.模块化
+     JavaScript并非模块化编程语言，至少ES6落地之前都不是。然而对于一个复杂的web应用，模块化编程时一个最基本的要求。这时，可以使用立即执行函数来实现模块化，正如很多JS库比如jQuery以及我们Fundebug都是这样实现的。
+     ```javascript
+    var module=(function(){
+        var N=5;
+        function print(x){
+          console.log("The result is:"+x)
+        }
+        function add(a){
+          var x = a + N;
+          print(x);
+        }
+        return {
+           description:"This is description",
+           add:add
+        };
+    })();
+    console.log(module.description);//输出"this is description"
+    module.add(5); // 输出 "The result is:10"
+   ```
+   所谓模块化,就是根据需要控制模块内属性与方法的可访问性,即私有或者公开.在代码中,module为一个独立的模块，N为其私有属性，print为其私用方法，description为其公有属性,add为其共有方法。
+   ### 6.变量提升
+   javasript会将所有变量和函数声明移动到它的作用域的最前面，这就是所谓的变量提升(Hoisting),也就是说，无论你在什么地方声明变量和函数，解释器都会将它移动到作用域的最前面。因此我们可以先使用变量和函数，而后声明他们。
+   但是，仅仅是变量被提升了，而变量赋值不会被提升。如果你不明白这一点，有时则会出错:
+   ```javascript
+     console.log(y); // 输出undefined
+     y=2;//初始化
+   ```
+   上面的代码等价于下面的代码:
+    ```javascript
+     var y; // 声明y
+     console.log(y) // 输出undefined
+     y=2; //初始化y
+   ```
+   为了避免BUG，开发者应该在每个作用域开始时声明变量和函数。
+   ### 7.柯里化
+   柯里化，即Currying,可以是函数变得更加灵活。我们可以一次性传入多个参数调用它;也可以只传入一部分参数来调用它,让它返回一个函数去处理剩下的参数。
+    ```javascript
+    var add = function(x){
+       return function(y){
+          return x+y;
+       }
+    }
+    console.log(add(1)(1)); // 输出2
+    var add1=add(1);
+    console.log(add(1)); // 输出2
+    var add10 = add(10);
+    console.log(add10(1)) // 输出 11
+   ```
+   代码中，我们可以一次性传入2个1作为参数add(1)(1),也可以传入以一个参数之后获取add1与add10函数，这样使用起来非常灵活。
+   ### 8.apply,call与bind方法
+   JavaScript开发者有必要理解apply,call与bind方法的不同点,他们共同点
+   
