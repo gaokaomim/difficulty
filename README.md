@@ -65,7 +65,7 @@
     console.log(y.getDimensions()); // {length:4,breadth:3}
  ```
   代码中，x和y都是构造函数Rectangle创建的对象实例，它们通过prototype继承了getDimensions方法 。
-   ### 5.模块化
+  ### 5.模块化
      JavaScript并非模块化编程语言，至少ES6落地之前都不是。然而对于一个复杂的web应用，模块化编程时一个最基本的要求。这时，可以使用立即执行函数来实现模块化，正如很多JS库比如jQuery以及我们Fundebug都是这样实现的。
    ```javascript
   var module=(function(){
