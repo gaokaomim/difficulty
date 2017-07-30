@@ -85,7 +85,7 @@
   })();
   console.log(module.description);//输出"this is description"
   module.add(5); // 输出 "The result is:10"
-   ```
+ ```
    所谓模块化,就是根据需要控制模块内属性与方法的可访问性,即私有或者公开.在代码中,module为一个独立的模块，N为其私有属性，print为其私用方法，
    description为其公有属性,add为其共有方法。
  ### 6.变量提升
