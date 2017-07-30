@@ -120,9 +120,25 @@
    代码中，我们可以一次性传入2个1作为参数add(1)(1),也可以传入以一个参数之后获取add1与add10函数，这样使用起来非常灵活。
  ### 8.apply,call与bind方法
    JavaScript开发者有必要理解apply,call与bind方法的不同点,他们共同点是第一个参数都是this,即函数运行时依赖的上下文。
-   三者之中，call方法最简单的，它等价于指定this值调用函数:
+ 三者之中，call方法最简单的，它等价于指定this值调用函数:
   ```javascript
     var user={
       name:"Rahul Mhatre",
-    }
+      whatIsYourName:function(){
+         console.log(this.name)
+      }
+    };
+    user.whatIsYourName(); //输出"Rahul Mhatra",
+    var user2={
+      name:"Neha Sampat"
+    };
+    user.whatIsYourName.call(user2);// 输出"Neha Sampat"
+ ```
+  apply方法与call方法类似.两者唯一的不同点在于,apply方法使用数组指定参数，而call方法每个参数单独需要指定:
+  ```javascript
+     apply(thisArg,[argsArray])
+     call(thisArg,arg1,arg2,...)
+     var user={
+         greet:"Hello!",
+     }
  ```
