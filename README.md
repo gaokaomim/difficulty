@@ -105,7 +105,7 @@
    为了避免BUG，开发者应该在每个作用域开始时声明变量和函数。
  ### 7.柯里化
    柯里化，即Currying,可以是函数变得更加灵活。我们可以一次性传入多个参数调用它;也可以只传入一部分参数来调用它,让它返回一个函数去处理剩下的参数。
-    ```javascript
+ ```javascript
     var add = function(x){
        return function(y){
           return x+y;
@@ -116,13 +116,13 @@
     console.log(add(1)); // 输出2
     var add10 = add(10);
     console.log(add10(1)) // 输出 11
-   ```
+  ```
    代码中，我们可以一次性传入2个1作为参数add(1)(1),也可以传入以一个参数之后获取add1与add10函数，这样使用起来非常灵活。
  ### 8.apply,call与bind方法
    JavaScript开发者有必要理解apply,call与bind方法的不同点,他们共同点是第一个参数都是this,即函数运行时依赖的上下文。
    三者之中，call方法最简单的，它等价于指定this值调用函数:
-    ```javascript
+  ```javascript
     var user={
       name:"Rahul Mhatre",
     }
-   ```
+  ```
