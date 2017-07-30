@@ -140,5 +140,28 @@
      call(thisArg,arg1,arg2,...)
      var user={
          greet:"Hello!",
-     }
+         greetUser:function(userName){
+             console.log(this.greet+""+userName);
+         }
+     };
+     var greet1={
+        greet:"Hola"
+     };
+     user.greetUser.call(greet1,"Rahul"); // 输出 "Hola Rahul"
+     user.greetUser.apply(greet1,["Rahul"]); // 输出"Hola Rahul"
  ```
+    使用bind方法,可以为函数绑定this值,然后作为一个新的函数返回:
+  ```javascript
+     var user={
+       greet:"Hello",
+       greetUser:function(userName){
+         console.log(this.greet+" "+userName);
+       }
+     };
+     var greetHola = user.greetUser.bind({greet:"Hola"});
+     var greetBonJour = user.greetUser.bind({greet:"Bonjour"});
+     greetHola("Rahul"); // 输出"Hola Rahul"
+     greetBonjour("Rahul") //输出"Bonjour Rahul"
+ ```
+ ### 9.Memoization
+ 
